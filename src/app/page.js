@@ -91,7 +91,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6 animate-fade-in">
               <h2 className="text-3xl sm:text-5xl font-bold leading-tight text-[#0A192F]">
-                The impact of
+                We are
                 <span className="text-[#0cd3b6] block">transformation</span>
               </h2>
               
@@ -135,11 +135,11 @@ export default function Home() {
 
             {/* Right side with butterfly transformation illustration */}
             <div className="relative h-[400px] animate-fade-in-delay">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#0cd3b6]/10 to-purple-600/10 rounded-2xl">
+              <div className="absolute inset-0  bg-none bg-gradient-to-br from-[#0cd3b6]/10 to-purple-600/10 rounded-2xl">
                 {/* Placeholder for illustration */}
                 <div className="w-full h-full flex items-center justify-center">
                   <span className="text-[#0A192F]">
-                    <Image src="/transformation-cambiar.png" alt="Butterfly Transformation" fill />
+                    <Image src="/cambiar trans.png" alt="Butterfly Transformation" fill />
                     {/* [Add butterfly transformation illustration here] */}
                   </span>
                 </div>

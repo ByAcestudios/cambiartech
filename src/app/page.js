@@ -1,100 +1,439 @@
+'use client'
 import Image from "next/image";
+import { useState, useRef } from 'react';
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [activeValue, setActiveValue] = useState('C');
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
+  return (
+    <div className="min-h-screen bg-[#0A192F] text-white">
+      {/* Navigation */}
+      <nav className="flex items-center justify-between px-4 py-4 sm:px-8">
+        <div className="w-32 sm:w-40">
+          <Image
+            src="/cambiar-logo.png"
+            alt="Cambiar Logo"
+            width={160}
+            height={40}
+            className="w-auto h-auto"
+            priority
+          />
+        </div>
+
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center gap-8">
+          <a href="#about" className="text-gray-300 hover:text-[#0cd3b6] transition-colors">About</a>
+          <a href="#services" className="text-gray-300 hover:text-[#0cd3b6] transition-colors">Services</a>
+          <a href="#portfolio" className="text-gray-300 hover:text-[#0cd3b6] transition-colors">Portfolio</a>
+          <a href="#contact" 
+             className="px-4 py-2 border-2 border-white text-white rounded-full 
+                      transition-colors hover:bg-white hover:text-[#03292c]">
+            Contact Us
           </a>
         </div>
+
+        {/* Mobile Menu Button */}
+        <button className="md:hidden text-white p-2">
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </nav>
+
+      {/* Hero Section */}
+      <main className="relative px-4 pt-12 pb-32 sm:px-8 sm:pt-24 overflow-hidden">
+        {/* Geometric Background Shapes */}
+        <div className="absolute inset-0 w-full h-full pointer-events-none">
+          {/* Left purple shape */}
+          <div className="absolute left-0 top-1/4 w-[300px] h-[600px] bg-purple-600/30 -rotate-45 transform -translate-x-1/2" />
+          
+          {/* Right teal shape */}
+          <div className="absolute right-0 top-0 w-[400px] h-[400px] bg-[#60e7ff]/20 rotate-45 transform translate-x-1/3" />
+          
+          {/* Bottom shape */}
+          <div className="absolute -bottom-20 right-1/4 w-[500px] h-[200px] bg-[#06bdfc]/20 rotate-12" />
+        </div>
+
+        {/* Content */}
+        <div className="relative max-w-4xl mx-auto text-center">
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold mb-8 leading-tight">
+            <span className="text-[#0cd3b6]">Transforming</span> ideas into
+            <span className="block">technological reality</span>
+          </h1>
+          
+          <p className="text-xl sm:text-2xl text-gray-300 max-w-3xl mx-auto mb-12">
+            We help companies navigate their digital transformation journey 
+            and build innovative solutions that drive growth.
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="#portfolio" 
+               className="px-8 py-4 bg-white text-[#03292c] rounded-full font-medium 
+                        hover:bg-opacity-90 transition-all min-w-[200px]">
+              Explore Our Work
+            </a>
+            <a href="#contact" 
+               className="px-8 py-4 border-2 border-white text-white rounded-full font-medium 
+                        hover:bg-white hover:text-[#03292c] transition-all min-w-[200px]">
+              Contact Us
+            </a>
+          </div>
+        </div>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+
+      {/* Transformation Section */}
+      <section className="relative px-4 py-32 sm:px-8 overflow-hidden bg-white">
+        {/* Decorative Elements - adjusted for light background */}
+        <div className="absolute bottom-0 right-0 w-32 h-64 bg-[#0cd3b6] opacity-10 blur-3xl animate-pulse" />
+        <div className="absolute top-20 left-0 w-32 h-64 bg-purple-600 opacity-10 blur-3xl animate-pulse delay-500" />
+        
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6 animate-fade-in">
+              <h2 className="text-3xl sm:text-5xl font-bold leading-tight text-[#0A192F]">
+                The impact of
+                <span className="text-[#0cd3b6] block">transformation</span>
+              </h2>
+              
+              <p className="text-xl text-gray-600">
+                Just as a caterpillar transforms into a butterfly, Cambiar—Spanish for "to transform"—guides 
+                companies through their technological metamorphosis.
+              </p>
+
+              <div className="space-y-4 text-gray-600">
+                <div className="flex items-start gap-4">
+                  <div className="w-8 h-8 rounded-full bg-[#0cd3b6]/20 flex items-center justify-center mt-1">
+                    <span className="text-[#0A192F] font-medium">1</span>
+                  </div>
+                  <div>
+                    <h3 className="text-[#0A192F] font-semibold mb-1">Emergence</h3>
+                    <p>Beginning the journey of digital transformation with clear vision and strategy</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-4">
+                  <div className="w-8 h-8 rounded-full bg-[#0cd3b6]/20 flex items-center justify-center mt-1">
+                    <span className="text-[#0A192F] font-medium">2</span>
+                  </div>
+                  <div>
+                    <h3 className="text-[#0A192F] font-semibold mb-1">Growth</h3>
+                    <p>Developing and implementing innovative solutions</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-4">
+                  <div className="w-8 h-8 rounded-full bg-[#0cd3b6]/20 flex items-center justify-center mt-1">
+                    <span className="text-[#0A192F] font-medium">3</span>
+                  </div>
+                  <div>
+                    <h3 className="text-[#0A192F] font-semibold mb-1">Transformation</h3>
+                    <p>Emerging as a fully transformed, technology-enabled organization</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right side with butterfly transformation illustration */}
+            <div className="relative h-[400px] animate-fade-in-delay">
+              <div className="absolute inset-0 bg-gradient-to-br from-[#0cd3b6]/10 to-purple-600/10 rounded-2xl">
+                {/* Placeholder for illustration */}
+                <div className="w-full h-full flex items-center justify-center">
+                  <span className="text-[#0A192F]">
+                    <Image src="/transformation-cambiar.png" alt="Butterfly Transformation" fill />
+                    {/* [Add butterfly transformation illustration here] */}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+     
+      {/* Core Values Section */}
+      <section className="relative px-4 py-32 sm:px-8 overflow-hidden bg-[#071527]">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center">
+            <h2 className="text-4xl sm:text-6xl font-bold mb-6">
+              Our <span className="text-[#0cd3b6]">core values</span>
+            </h2>
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-20">
+              We live by a set of core values designed to drive innovation and transformation
+            </p>
+          </div>
+
+          {/* CAMBIAR Letters */}
+          <div className="flex justify-center items-center gap-2 mb-16">
+            {['C', 'A1', 'M', 'B', 'I', 'A2', 'R'].map((letter, index) => (
+              <button
+                key={letter}
+                onClick={() => {
+                  const element = document.getElementById(`value-${letter}`);
+                  element?.scrollIntoView({ behavior: 'smooth', inline: 'center' });
+                  setActiveValue(letter);
+                }}
+                className={`w-16 h-16 flex items-center justify-center text-2xl font-bold rounded-lg
+                           transition-all duration-300 ${activeValue === letter ? 'bg-[#0cd3b6] text-[#0A192F]' : 'bg-[#1A2C4D] text-white'}`}
+              >
+                {letter.replace(/[0-9]/g, '')}
+              </button>
+            ))}
+          </div>
+
+          {/* Horizontal Scrolling Values */}
+          <div className="relative">
+            <div className="overflow-x-auto hide-scrollbar">
+              <div className="flex gap-6 pb-6">
+                {/* Catalyst */}
+                <div id="value-C" 
+                     onClick={() => setActiveValue('C')}
+                     className={`flex-shrink-0 w-[400px] bg-[#1A2C4D] rounded-2xl p-8 cursor-pointer
+                                transition-all duration-300 ${activeValue === 'C' ? 'opacity-100 scale-100' : 'opacity-50 scale-95'}`}>
+                  <div className="w-12 h-12 bg-[#0A192F] rounded-xl flex items-center justify-center mb-4">
+                    <svg className="w-6 h-6 text-[#0cd3b6]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">Catalyst</h3>
+                  <p className="text-gray-300">
+                    We act as catalysts for change, sparking innovation and driving technological transformation.
+                  </p>
+                </div>
+
+                {/* Adaptable */}
+                <div id="value-A1" 
+                     onClick={() => setActiveValue('A1')}
+                     className={`flex-shrink-0 w-[400px] bg-[#1A2C4D] rounded-2xl p-8 cursor-pointer
+                                transition-all duration-300 ${activeValue === 'A1' ? 'opacity-100 scale-100' : 'opacity-50 scale-95'}`}>
+                  <div className="w-12 h-12 bg-[#0A192F] rounded-xl flex items-center justify-center mb-4">
+                    <svg className="w-6 h-6 text-[#0cd3b6]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                    </svg>
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">Adaptable</h3>
+                  <p className="text-gray-300">
+                    We embrace change and adapt quickly to evolving technological landscapes.
+                  </p>
+                </div>
+
+                {/* Mindful */}
+                <div id="value-M" 
+                     onClick={() => setActiveValue('M')}
+                     className={`flex-shrink-0 w-[400px] bg-[#1A2C4D] rounded-2xl p-8 cursor-pointer
+                                transition-all duration-300 ${activeValue === 'M' ? 'opacity-100 scale-100' : 'opacity-50 scale-95'}`}>
+                  <div className="w-12 h-12 bg-[#0A192F] rounded-xl flex items-center justify-center mb-4">
+                    <svg className="w-6 h-6 text-[#0cd3b6]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">Mindful</h3>
+                  <p className="text-gray-300">
+                    We approach challenges thoughtfully, considering the long-term impact of our solutions.
+                  </p>
+                </div>
+
+                {/* Bold */}
+                <div id="value-B" 
+                     onClick={() => setActiveValue('B')}
+                     className={`flex-shrink-0 w-[400px] bg-[#1A2C4D] rounded-2xl p-8 cursor-pointer
+                                transition-all duration-300 ${activeValue === 'B' ? 'opacity-100 scale-100' : 'opacity-50 scale-95'}`}>
+                  <div className="w-12 h-12 bg-[#0A192F] rounded-xl flex items-center justify-center mb-4">
+                    <svg className="w-6 h-6 text-[#0cd3b6]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                    </svg>
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">Bold</h3>
+                  <p className="text-gray-300">
+                    We take calculated risks and make bold decisions to drive innovation forward.
+                  </p>
+                </div>
+
+                {/* Innovative */}
+                <div id="value-I" 
+                     onClick={() => setActiveValue('I')}
+                     className={`flex-shrink-0 w-[400px] bg-[#1A2C4D] rounded-2xl p-8 cursor-pointer
+                                transition-all duration-300 ${activeValue === 'I' ? 'opacity-100 scale-100' : 'opacity-50 scale-95'}`}>
+                  <div className="w-12 h-12 bg-[#0A192F] rounded-xl flex items-center justify-center mb-4">
+                    <svg className="w-6 h-6 text-[#0cd3b6]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">Innovative</h3>
+                  <p className="text-gray-300">
+                    We constantly seek new ways to solve problems and create value.
+                  </p>
+                </div>
+
+                {/* Accountable (second A) */}
+                <div id="value-A2" 
+                     onClick={() => setActiveValue('A2')}
+                     className={`flex-shrink-0 w-[400px] bg-[#1A2C4D] rounded-2xl p-8 cursor-pointer
+                                transition-all duration-300 ${activeValue === 'A2' ? 'opacity-100 scale-100' : 'opacity-50 scale-95'}`}>
+                  <div className="w-12 h-12 bg-[#0A192F] rounded-xl flex items-center justify-center mb-4">
+                    <svg className="w-6 h-6 text-[#0cd3b6]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">Accountable</h3>
+                  <p className="text-gray-300">
+                    We take ownership of our actions and deliver on our promises.
+                  </p>
+                </div>
+
+                {/* Resilient */}
+                <div id="value-R" 
+                     onClick={() => setActiveValue('R')}
+                     className={`flex-shrink-0 w-[400px] bg-[#1A2C4D] rounded-2xl p-8 cursor-pointer
+                                transition-all duration-300 ${activeValue === 'R' ? 'opacity-100 scale-100' : 'opacity-50 scale-95'}`}>
+                  <div className="w-12 h-12 bg-[#0A192F] rounded-xl flex items-center justify-center mb-4">
+                    <svg className="w-6 h-6 text-[#0cd3b6]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                    </svg>
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">Resilient</h3>
+                  <p className="text-gray-300">
+                    We persist through challenges and emerge stronger from every obstacle.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+       {/* Portfolio Section */}
+       <section className="relative px-4 py-32 sm:px-8 overflow-hidden bg-[#0A192F]">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-5xl font-bold mb-6 text-white">
+              Our Portfolio
+            </h2>
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+              Transforming ideas into impactful solutions across different sectors
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Imago Mum */}
+            <div className="bg-[#FFD700] p-8 rounded-3xl transform transition-all hover:scale-105">
+              <h3 className="text-[#0A192F] text-4xl font-bold mb-3">Imago Mum</h3>
+              <p className="text-[#0A192F]/80 font-medium uppercase text-sm tracking-wider mb-4">Healthcare & AI</p>
+              <a href="https://www.imagomum.com/" className="inline-flex items-center text-[#0A192F] hover:gap-2 transition-all duration-300">
+                Learn More →
+              </a>
+            </div>
+
+            {/* Cleyfi */}
+            <div className="bg-[#FF69B4] p-8 rounded-3xl transform transition-all hover:scale-105">
+              <h3 className="text-[#0A192F] text-4xl font-bold mb-3">Cleyfi</h3>
+              <p className="text-[#0A192F]/80 font-medium uppercase text-sm tracking-wider mb-4">FinTech</p>
+              <a href="https://www.cleyfi.com/" className="inline-flex items-center text-[#0A192F] hover:gap-2 transition-all duration-300">
+                Learn More →
+              </a>
+            </div>
+
+            {/* Go Express */}
+            <div className="bg-[#FF8C00] p-8 rounded-3xl transform transition-all hover:scale-105">
+              <h3 className="text-[#0A192F] text-4xl font-bold mb-3">Go Express</h3>
+              <p className="text-[#0A192F]/80 font-medium uppercase text-sm tracking-wider mb-4">Swift Delivery</p>
+              <a href="#" className="inline-flex items-center text-[#0A192F] hover:gap-2 transition-all duration-300">
+                Learn More →
+              </a>
+            </div>
+
+            {/* Cambiar Creators */}
+            <div className="bg-[#00CED1] p-8 rounded-3xl transform transition-all hover:scale-105">
+              <h3 className="text-[#0A192F] text-4xl font-bold mb-3">Cambiar Creators</h3>
+              <p className="text-[#0A192F]/80 font-medium uppercase text-sm tracking-wider mb-4">Creator Economy</p>
+              <a href="#" className="inline-flex items-center text-[#0A192F] hover:gap-2 transition-all duration-300">
+                Learn More →
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+
+      {/* Footer Section */}
+      <footer className="bg-[#071527] text-white py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+            {/* Company Info */}
+            <div className="space-y-6">
+              <Image
+                src="/cambiar-logo.png"
+                alt="Cambiar Logo"
+                width={140}
+                height={35}
+                className="w-auto h-auto"
+              />
+              <p className="text-gray-400">
+                Revolutionizing the future of technology through innovative solutions and transformative change.
+              </p>
+            </div>
+
+            {/* Locations */}
+            <div>
+              <h3 className="text-lg font-bold mb-4">Our Locations</h3>
+              <div className="space-y-4">
+                <div>
+                  <h4 className="font-medium text-[#0cd3b6]">Lagos, Nigeria</h4>
+                  <p className="text-gray-400 mt-1">Innovation Hub</p>
+                  <p className="text-gray-400">Cafeone, University of Lagos</p>
+                </div>
+                <div>
+                  <h4 className="font-medium text-[#0cd3b6]">Delaware, United States</h4>
+                  <p className="text-gray-400 mt-1">Corporate Office</p>
+                  <p className="text-gray-400">8 The Green, Suite B</p>
+                  <p className="text-gray-400">Dover, Delaware</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Quick Links */}
+            <div>
+              <h3 className="text-lg font-bold mb-4">Quick Links</h3>
+              <ul className="space-y-3">
+                <li><a href="#" className="text-gray-400 hover:text-[#0cd3b6] transition-colors">About Us</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-[#0cd3b6] transition-colors">Portfolio</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-[#0cd3b6] transition-colors">Core Values</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-[#0cd3b6] transition-colors">Careers</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-[#0cd3b6] transition-colors">Contact</a></li>
+              </ul>
+            </div>
+
+            {/* Contact */}
+            <div>
+              <h3 className="text-lg font-bold mb-4">Get in Touch</h3>
+              <div className="space-y-3">
+                <a href="mailto:hello@cambiar.tech" 
+                   className="flex items-center gap-2 text-gray-400 hover:text-[#0cd3b6] transition-colors">
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
+                          d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                  hello@cambiartech.com
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Bar */}
+          <div className="border-t border-gray-800 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center">
+            <p className="text-gray-400 text-sm">
+              © {new Date().getFullYear()} Cambiar Technologies LLC. All rights reserved.
+            </p>
+            <div className="flex gap-6 mt-4 md:mt-0">
+              <a href="#" className="text-gray-400 hover:text-[#0cd3b6] transition-colors">Privacy Policy</a>
+              <a href="#" className="text-gray-400 hover:text-[#0cd3b6] transition-colors">Terms of Service</a>
+            </div>
+          </div>
+        </div>
       </footer>
     </div>
   );

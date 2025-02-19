@@ -29,8 +29,11 @@ const studioFeixen = localFont({
 })
 
 export const metadata = {
-  title: "Cambiar",
-  description: "Your startup description here",
+  title: "Cambiar Technologies",
+  description: "transforming your creators with technology",
+  icons: {
+    icon: '/favicon.ico', // or '/icon.png'
+  },
 };
 
 export default function RootLayout({ children }) {

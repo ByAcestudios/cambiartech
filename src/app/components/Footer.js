@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -42,11 +43,11 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-bold mb-4">Quick Links</h3>
             <ul className="space-y-3">
-              <li><a href="/" className="text-gray-400 hover:text-[#0cd3b6] transition-colors">About Us</a></li>
-              <li><a href="/#portfolio" className="text-gray-400 hover:text-[#0cd3b6] transition-colors">Portfolio</a></li>
-              <li><a href="/#core-values" className="text-gray-400 hover:text-[#0cd3b6] transition-colors">Core Values</a></li>
-              <li><a href="/" className="text-gray-400 hover:text-[#0cd3b6] transition-colors">Careers</a></li>
-              <li><a href="/#contact" className="text-gray-400 hover:text-[#0cd3b6] transition-colors">Contact</a></li>
+              <li><Link href="/" className="text-gray-400 hover:text-[#0cd3b6] transition-colors">About Us</Link></li>
+              <li><Link href="/#portfolio" className="text-gray-400 hover:text-[#0cd3b6] transition-colors">Portfolio</Link></li>
+              <li><Link href="/#core-values" className="text-gray-400 hover:text-[#0cd3b6] transition-colors">Core Values</Link></li>
+              <li><Link href="/" className="text-gray-400 hover:text-[#0cd3b6] transition-colors">Careers</Link></li>
+              <li><Link href="/#contact" className="text-gray-400 hover:text-[#0cd3b6] transition-colors">Contact</Link></li>
             </ul>
           </div>
 
@@ -54,10 +55,10 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-bold mb-4">Legal</h3>
             <ul className="space-y-3">
-              <li><a href="/terms" className="text-gray-400 hover:text-[#0cd3b6] transition-colors">Terms &amp; Conditions</a></li>
-              <li><a href="/refund" className="text-gray-400 hover:text-[#0cd3b6] transition-colors">Refund Policy</a></li>
-              <li><a href="/privacy" className="text-gray-400 hover:text-[#0cd3b6] transition-colors">Privacy Policy</a></li>
-              <li><a href="/faq" className="text-gray-400 hover:text-[#0cd3b6] transition-colors">FAQs</a></li>
+              <li><Link href="/terms" className="text-gray-400 hover:text-[#0cd3b6] transition-colors">Terms &amp; Conditions</Link></li>
+              <li><Link href="/refund" className="text-gray-400 hover:text-[#0cd3b6] transition-colors">Refund Policy</Link></li>
+              <li><Link href="/privacy" className="text-gray-400 hover:text-[#0cd3b6] transition-colors">Privacy Policy</Link></li>
+              <li><Link href="/faq" className="text-gray-400 hover:text-[#0cd3b6] transition-colors">FAQs</Link></li>
             </ul>
           </div>
 
@@ -83,8 +84,8 @@ export default function Footer() {
             © {new Date().getFullYear()} Cambiar Technologies LLC. All rights reserved.
           </p>
           <div className="flex gap-6 mt-4 md:mt-0">
-            <a href="/privacy" className="text-gray-400 hover:text-[#0cd3b6] transition-colors">Privacy Policy</a>
-            <a href="#" className="text-gray-400 hover:text-[#0cd3b6] transition-colors">Terms of Service</a>
+            <Link href="/privacy" className="text-gray-400 hover:text-[#0cd3b6] transition-colors">Privacy Policy</Link>
+            <Link href="/terms" className="text-gray-400 hover:text-[#0cd3b6] transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>

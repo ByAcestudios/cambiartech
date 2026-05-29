@@ -26,7 +26,8 @@ export default function Footer() {
               <div>
                 <h4 className="font-medium text-[#0cd3b6]">Lagos, Nigeria</h4>
                 <p className="text-gray-400 mt-1">Innovation Hub</p>
-                <p className="text-gray-400">Cafeone, University of Lagos</p>
+                {/* <p className="text-gray-400">Cafeone, University of Lagos</p> */}
+                <p className="text-gray-400">14 Kekereowo St, Mushin, Lagos 102215, Lagos, Nigeria</p>
               </div>
               <div>
                 <h4 className="font-medium text-[#0cd3b6]">Delaware, United States</h4>
